@@ -17,7 +17,7 @@ class User extends Kitton {
     'phone_number',
   ];
 
-  String get id => string('id');
+  int get id => intValue('id');
 
   String get name => string('name');
 
@@ -25,13 +25,36 @@ class User extends Kitton {
 
   String get phoneNumber => string('phone_number');
 
+  String get dateOfBirth => string('date_of_birth');
+
+  bool get isAdult => boolValue('is_adult');
+
+  String get role => string('role');
+
+  String get avatar => string('avatar');
+
+  bool get emailVerified => boolValue('email_verified');
+
+  String get status => string('status');
+
   String get password => string('password');
 
-  String get roles => string('roles');
+  Wallet? get wallet => model<Wallet>(
+        'wallet',
+        Wallet.new,
+      );
 
-  /// Indicates if the current user is an admin.
-  bool get isAdmin => roles == 'admin';
+  bool get isAdmin => role == 'admin';
 
-  /// Indicates if the current user is a driver.
-  bool get isDriver => roles == 'driver';
+  bool get isDriver => role == 'driver';
+
+  bool get isActive => status == 'active';
+}
+
+class Wallet extends Kitton {
+  Wallet(super.data);
+
+  num get balance => data['balance'] ?? 0;
+
+  num get reserved => data['reserved'] ?? 0;
 }
