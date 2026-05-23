@@ -13,12 +13,12 @@ class AuthController extends BaseControllerV2 {
     required String password,
   }) async {
     await runGuarded(() async {
-      final result = await repository.login(
+      final user = await repository.login(
         email: email,
         password: password,
       );
 
-      session.set(result);
+      session.set(user);
 
       setSuccess();
     });
@@ -30,13 +30,13 @@ class AuthController extends BaseControllerV2 {
     required String password,
   }) async {
     await runGuarded(() async {
-      final result = await repository.register(
+      final user = await repository.register(
         name: name,
         email: email,
         password: password,
       );
 
-      session.set(result);
+      session.set(user);
 
       setSuccess();
     });
