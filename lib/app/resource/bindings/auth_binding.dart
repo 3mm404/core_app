@@ -1,5 +1,6 @@
 import 'package:core_app/app/controller/authController.dart';
-import 'package:core_app/app/services/authServices.dart';
+import 'package:core_app/app/data/repository/authRepository.dart';
+import 'package:core_app/app/data/services/authServices.dart';
 import 'package:core_app/core/auth/session.dart';
 import 'package:core_app/core/api/api.dart';
 import 'package:core_app/core/https/http_service.dart';
@@ -9,33 +10,40 @@ import 'package:get/get.dart';
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    // 1. Registrar StorageService (no tiene dependencias)
-    Get.lazyPut<StorageService>(() => StorageService());
+    // 1. Registrar StorageService
+    Get.lazyPut<StorageService>(
+      () => StorageService(),
+    );
 
-    // 2. Registrar HttpService (necesita StorageService)
+    // 2. Registrar HttpService
     Get.lazyPut<HttpService>(
       () => HttpService(Get.find<StorageService>()),
     );
 
-    // 3. Registrar Api (necesita HttpService)
+    // 3. Registrar Api
     Get.lazyPut<Api>(
       () => Api(Get.find<HttpService>()),
     );
 
-    // 4. Registrar Session (necesita StorageService)
+    // 4. Registrar Session
     Get.lazyPut<Session>(
       () => Session(Get.find<StorageService>()),
     );
 
-    // 5. Registrar AuthService (necesita Api)
+    // 5. Registrar AuthService
     Get.lazyPut<AuthService>(
       () => AuthService(Get.find<Api>()),
     );
 
-    // 6. Registrar AuthController (necesita AuthService y Session)
+    // 6. Registrar AuthRepository
+    Get.lazyPut<AuthRepository>(
+      () => AuthRepository(Get.find<AuthService>()),
+    );
+
+    // 7. Registrar AuthController
     Get.lazyPut<AuthController>(
       () => AuthController(
-        Get.find<AuthService>(),
+        Get.find<AuthRepository>(),
         Get.find<Session>(),
       ),
     );

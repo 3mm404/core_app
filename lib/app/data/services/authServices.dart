@@ -37,9 +37,9 @@ class AuthService {
     );
   }
 
-Future<void> logout() async {
-  await api.postVoid(
-    ApiAuthRoutes.logout,
-  );
-}
+  Future<void> logout() async {
+    await api.postVoid(
+      ApiAuthRoutes.logout,
+    );
+  }
 }
