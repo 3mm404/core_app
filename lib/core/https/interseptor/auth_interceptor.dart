@@ -1,4 +1,4 @@
-import 'package:core_app/core/https/storage/storage.dart';
+import 'package:core_app/core/getx/storage.dart';
 import 'package:dio/dio.dart';
 
 class AuthInterceptor extends Interceptor {

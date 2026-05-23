@@ -1,10 +1,10 @@
 import 'package:core_app/app/controller/authController.dart';
-import 'package:core_app/app/data/repository/authRepository.dart';
+import 'package:core_app/app/data/repositories/authRepository.dart';
 import 'package:core_app/app/data/services/authServices.dart';
 import 'package:core_app/core/auth/session.dart';
 import 'package:core_app/core/api/api.dart';
 import 'package:core_app/core/https/http_service.dart';
-import 'package:core_app/core/https/storage/storage.dart';
+import 'package:core_app/core/getx/storage.dart';
 import 'package:get/get.dart';
 
 class AuthBinding extends Bindings {

@@ -1,4 +1,4 @@
-import 'package:core_app/app/models/authModel.dart';
+import 'package:core_app/app/data/models/userModel.dart';
 import 'package:core_app/core/api/api.dart';
 import 'package:core_app/core/https/my_apis.dart';
 
@@ -7,33 +7,33 @@ class AuthService {
 
   AuthService(this.api);
 
-  Future<Auth> login({
+  Future<User> login({
     required String email,
     required String password,
   }) {
-    return api.post<Auth>(
+    return api.post<User>(
       ApiAuthRoutes.login,
       data: {
         'email': email,
         'password': password,
       },
-      model: Auth.new,
+      model: User.new,
     );
   }
 
-  Future<Auth> register({
+  Future<User> register({
     required String name,
     required String email,
     required String password,
   }) {
-    return api.post<Auth>(
+    return api.post<User>(
       ApiAuthRoutes.register,
       data: {
         'name': name,
         'email': email,
         'password': password,
       },
-      model: Auth.new,
+      model: User.new,
     );
   }
 

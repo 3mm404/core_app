@@ -4,18 +4,10 @@ class User extends Kitton {
   User(super.data);
 
   /// Allowed fields for login requests.
-  static const login = [
-    'email',
-    'password',
-  ];
+  static const login = ['email', 'password'];
 
   /// Allowed fields for register requests.
-  static const register = [
-    'name',
-    'email',
-    'password',
-    'phone_number',
-  ];
+  static const register = ['name', 'email', 'password', 'phone_number'];
 
   int get id => intValue('id');
 
@@ -39,10 +31,9 @@ class User extends Kitton {
 
   String get password => string('password');
 
-  Wallet? get wallet => model<Wallet>(
-        'wallet',
-        Wallet.new,
-      );
+  String get token => string('token');
+
+  Wallet? get wallet => model<Wallet>('wallet', Wallet.new);
 
   bool get isAdmin => role == 'admin';
 

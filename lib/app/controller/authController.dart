@@ -1,4 +1,4 @@
-import 'package:core_app/app/data/repository/authRepository.dart';
+import 'package:core_app/app/data/repositories/authRepository.dart';
 import 'package:core_app/core/auth/session.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 

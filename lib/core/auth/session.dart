@@ -1,7 +1,5 @@
-
-import 'package:core_app/app/models/authModel.dart';
-import 'package:core_app/app/models/userModel.dart';
-import 'package:core_app/core/https/storage/storage.dart';
+import 'package:core_app/app/data/models/userModel.dart';
+import 'package:core_app/core/getx/storage.dart';
 import 'package:get/get.dart';
 
 class Session {
@@ -15,10 +13,10 @@ class Session {
 
   String? get token => storage.getToken();
 
-  void set(Auth auth) {
+  void set(User auth) {
     storage.saveToken(auth.token);
 
-    user.value = auth.user;
+    user.value = auth;
   }
 
   void clear() {

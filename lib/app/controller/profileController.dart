@@ -1,5 +1,5 @@
-import 'package:core_app/app/data/repository/auth_repository.dart';
-import 'package:core_app/app/models/userModel.dart';
+import 'package:core_app/app/data/repositories/profile_repository.dart';
+import 'package:core_app/app/data/models/userModel.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 
 class ProfileController extends BaseControllerV2 {

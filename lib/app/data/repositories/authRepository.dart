@@ -1,12 +1,12 @@
+import 'package:core_app/app/data/models/userModel.dart';
 import 'package:core_app/app/data/services/authServices.dart';
-import 'package:core_app/app/models/authModel.dart';
 
 class AuthRepository {
   final AuthService service;
 
   AuthRepository(this.service);
 
-  Future<Auth> login({
+  Future<User> login({
     required String email,
     required String password,
   }) {
@@ -16,7 +16,7 @@ class AuthRepository {
     );
   }
 
-  Future<Auth> register({
+  Future<User> register({
     required String name,
     required String email,
     required String password,

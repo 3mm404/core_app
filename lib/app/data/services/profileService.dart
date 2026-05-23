@@ -1,4 +1,4 @@
-import 'package:core_app/app/models/userModel.dart';
+import 'package:core_app/app/data/models/userModel.dart';
 import 'package:core_app/core/api/api.dart';
 import 'package:core_app/core/https/my_apis.dart';
 

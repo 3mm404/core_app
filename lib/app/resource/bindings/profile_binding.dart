@@ -1,5 +1,5 @@
 import 'package:core_app/app/controller/profileController.dart';
-import 'package:core_app/app/data/repository/auth_repository.dart';
+import 'package:core_app/app/data/repositories/profile_repository.dart';
 import 'package:core_app/app/data/services/profileService.dart';
 import 'package:core_app/core/api/api.dart';
 import 'package:get/get.dart';
