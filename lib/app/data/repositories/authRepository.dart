@@ -1,5 +1,5 @@
+import 'package:core_app/app/data/models/userModel.dart';
 import 'package:core_app/app/data/services/authServices.dart';
-import 'package:core_app/app/models/userModel.dart';
 
 class AuthRepository {
   final AuthService service;
