@@ -27,7 +27,7 @@ class HomePage extends GetView<ProfileController> {
           }
 
           final sessionUser = authController.session.user.value;
-          final user = controller.user.value ?? sessionUser;
+          final user = controller.user ?? sessionUser;
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,

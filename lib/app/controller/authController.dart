@@ -1,22 +1,19 @@
-import 'package:core_app/app/services/authServices.dart';
+import 'package:core_app/app/data/repositories/auth_repository.dart';
 import 'package:core_app/core/auth/session.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 
 class AuthController extends BaseControllerV2 {
-  final AuthService auth;
+  final AuthRepository repository;
   final Session session;
 
-  AuthController(this.auth, this.session);
-
-  
+  AuthController(this.repository, this.session);
 
   Future<void> login({
     required String email,
     required String password,
   }) async {
     await runGuarded(() async {
-
-      final result = await auth.login(
+      final result = await repository.login(
         email: email,
         password: password,
       );
@@ -28,11 +25,10 @@ class AuthController extends BaseControllerV2 {
   }
 
   Future<void> logout() async {
-  await runGuarded(() async {
+    await runGuarded(() async {
+      session.clear();
 
-    session.clear();
-
-    setSuccess();
-  });
-}
+      setSuccess();
+    });
+  }
 }

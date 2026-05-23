@@ -10,7 +10,7 @@ class Session {
   final Rxn<User> user = Rxn<User>();
 
   Session(this.storage);
-
+   
   bool get isLoggedIn => user.value != null;
 
   String? get token => storage.getToken();
