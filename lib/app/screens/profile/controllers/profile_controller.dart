@@ -1,10 +1,10 @@
 import 'package:core_app/app/data/models/user.dart';
-import 'package:core_app/app/modules/profile/repositories/profile_repository.dart';
+import 'package:core_app/app/modules/profile/providers/profile_repository.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends BaseControllerV2 {
-  final ProfileRepository repository;
+  final ProfileProviders repository;
 
   ProfileController(this.repository);
 
