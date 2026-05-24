@@ -1,7 +1,6 @@
-import 'package:core_app/app/resource/home_page.dart';
-import 'package:core_app/app/resource/login_page.dart';
-import 'package:core_app/app/resource/bindings/auth_binding.dart';
-import 'package:core_app/app/resource/bindings/profile_binding.dart';
+import 'package:core_app/app/middlewares/authMiddleware.dart';
+import 'package:core_app/app/modules/profile/views/home_page.dart';
+import 'package:core_app/app/modules/auth/views/login_page.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -13,15 +12,16 @@ class AppPages {
   static final pages = [
     GetPage(
       name: AppRoutes.login,
-      page: () => LoginPage(),
-      binding: AuthBinding(),
+      page: () => const LoginPage(),
+      middlewares: [
+        GuestMiddleware(),
+      ],
     ),
     GetPage(
       name: AppRoutes.home,
       page: () => const HomePage(),
-      bindings: [
-        AuthBinding(),
-        ProfileBinding(),
+      middlewares: [
+        AuthMiddleware(),
       ],
     ),
   ];

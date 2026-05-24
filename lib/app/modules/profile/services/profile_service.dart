@@ -1,15 +1,15 @@
-import 'package:core_app/app/data/models/userModel.dart';
-import 'package:core_app/core/api/api.dart';
+import 'package:core_app/app/modules/auth/models/user.dart';
 import 'package:core_app/core/https/my_apis.dart';
+import 'package:kitton/kitton.dart';
 
 class ProfileService {
-  final Api api;
+  final KittonApi api;
 
   ProfileService(this.api);
 
   Future<User> getProfile() {
     return api.get<User>(
-      ApiProfileRoutes.userProfile,
+      UserProfile.profile,
       model: User.new,
     );
   }

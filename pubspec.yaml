@@ -12,7 +12,9 @@ dependencies:
     sdk: flutter
   get: ^4.7.3
   get_storage: ^2.1.1
-
+  kitton:
+    path: ../kitton
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter

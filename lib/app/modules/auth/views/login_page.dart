@@ -1,13 +1,9 @@
-import 'package:core_app/app/controller/authController.dart';
-import 'package:core_app/app/routes/app_pages.dart';
+import 'package:core_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends GetView<AuthController> {
-  LoginPage({super.key});
-
-  final emailCtrl = TextEditingController();
-  final passwordCtrl = TextEditingController();
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +21,31 @@ class LoginPage extends GetView<AuthController> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
               const SizedBox(height: 32),
+
               TextField(
-                controller: emailCtrl,
+                controller: controller.emailCtrl,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
               ),
+
               const SizedBox(height: 16),
+
               TextField(
-                controller: passwordCtrl,
+                controller: controller.passwordCtrl,
                 obscureText: true,
                 decoration: const InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                 ),
               ),
+
               const SizedBox(height: 24),
+
               Obx(() {
                 if (controller.isLoading) {
                   return const CircularProgressIndicator();
@@ -52,24 +54,7 @@ class LoginPage extends GetView<AuthController> {
                 return SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      await controller.login(
-                        email: emailCtrl.text.trim(),
-                        password: passwordCtrl.text.trim(),
-                      );
-
-                      if (controller.isSuccess) {
-                        Get.offAllNamed(AppRoutes.home);
-                      }
-
-                      if (controller.hasError) {
-                        Get.snackbar(
-                          'Error',
-                          controller.errorMessage.value,
-                          snackPosition: SnackPosition.BOTTOM,
-                        );
-                      }
-                    },
+                    onPressed: controller.submitLogin,
                     child: const Text('Entrar'),
                   ),
                 );

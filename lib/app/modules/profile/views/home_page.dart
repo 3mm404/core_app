@@ -1,6 +1,5 @@
-import 'package:core_app/app/controller/authController.dart';
-import 'package:core_app/app/controller/profileController.dart';
-import 'package:core_app/app/routes/app_pages.dart';
+import 'package:core_app/app/modules/auth/controllers/auth_controller.dart';
+import 'package:core_app/app/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,8 +25,10 @@ class HomePage extends GetView<ProfileController> {
             return Text(controller.errorMessage.value);
           }
 
+          final profileUser = controller.user.value;
           final sessionUser = authController.session.user.value;
-          final user = controller.user ?? sessionUser;
+
+          final user = profileUser ?? sessionUser;
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -39,18 +40,23 @@ class HomePage extends GetView<ProfileController> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
               const SizedBox(height: 16),
+
               Text('Email: ${user?.email ?? '-'}'),
+
               const SizedBox(height: 8),
+
               Text('Rol: ${user?.role ?? '-'}'),
+
               const SizedBox(height: 8),
+
               Text('Estado: ${user?.status ?? '-'}'),
+
               const SizedBox(height: 32),
+
               ElevatedButton.icon(
-                onPressed: () async {
-                  await authController.logout();
-                  Get.offAllNamed(AppRoutes.login);
-                },
+                onPressed: authController.logout,
                 icon: const Icon(Icons.logout),
                 label: const Text('Logout'),
               ),

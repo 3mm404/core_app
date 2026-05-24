@@ -1,78 +1,55 @@
-// core/storage/storage_service.dart
-//
-// Servicio de almacenamiento local basado en GetStorage.
-// Se encarga de persistir el token de autenticación entre sesiones.
-// Es inyectado como dependencia permanente desde InitialBinding.
-
 import 'package:get_storage/get_storage.dart';
 
 class StorageService {
-  // Instancia única del almacenamiento local
-  final _box = GetStorage();
+  final GetStorage _box = GetStorage();
 
-  // Clave usada para guardar y leer el token de autenticación
   static const String tokenKey = 'auth_token';
-
-  // Clave usada para el rol del usuario (cliente o conductor)
   static const String roleKey = 'user_role';
 
-  // ── Token ──────────────────────────────────────────────────────────────────
+  Future<void> saveToken(String token) async {
+    await _box.write(tokenKey, token);
+  }
 
-  /// Guarda el token JWT recibido tras el login / OTP
-  void saveToken(String token) => _box.write(tokenKey, token);
+  String? getToken() {
+    return _box.read<String>(tokenKey);
+  }
 
-  /// Retorna el token guardado, o null si el usuario no ha iniciado sesión
-  String? getToken() => _box.read(tokenKey);
+  Future<void> removeToken() async {
+    await _box.remove(tokenKey);
+  }
 
-  /// Elimina el token al cerrar sesión
-  void removeToken() => _box.remove(tokenKey);
+  bool get isLoggedIn {
+    final token = getToken();
+    return token != null && token.isNotEmpty;
+  }
 
-  /// Indica si el usuario tiene una sesión activa
-  bool get isLoggedIn => getToken() != null;
+  bool get isDriver => _box.read<String>(roleKey) == 'driver';
 
-  //esto es para saber si el usuario es driver
-  bool get isDriver => _box.read(roleKey) == 'driver';
+  Future<void> saveRole(String role) async {
+    await _box.write(roleKey, role);
+  }
 
-  // ── Rol de usuario ──────────────────────────────────────────────────────────
+  String? getRole() {
+    return _box.read<String>(roleKey);
+  }
 
-  /// Guarda el rol del usuario (ej: 'client', 'driver')
-  void saveRole(String role) => _box.write(roleKey, role);
+  Future<void> save(String key, dynamic value) async {
+    await _box.write(key, value);
+  }
 
-  /// Retorna el rol del usuario, o null si no se ha guardado
-  String? getRole() => _box.read(roleKey);
+  T? get<T>(String key) {
+    return _box.read<T>(key);
+  }
 
-  // ── Genérico ────────────────────────────────────────────────────────────────
+  Future<void> remove(String key) async {
+    await _box.remove(key);
+  }
 
-  /// Guarda cualquier valor serializable bajo una clave arbitraria.
-  ///
-  /// Tipos soportados por GetStorage: String, int, double, bool, List, Map.
-  /// Para objetos personalizados, convierte a Map primero (ej: model.toJson()).
-  ///
-  /// Ejemplo:
-  /// ```dart
-  /// storage.save('onboarding_done', true);
-  /// storage.save('user_prefs', {'theme': 'dark', 'lang': 'es'});
-  /// ```
-  void save(String key, dynamic value) => _box.write(key, value);
+  bool has(String key) {
+    return _box.hasData(key);
+  }
 
-  /// Retorna el valor asociado a [key] casteado al tipo [T], o null si no existe.
-  ///
-  /// Ejemplo:
-  /// ```dart
-  /// final done = storage.get<bool>('onboarding_done');       // true / null
-  /// final prefs = storage.get<Map>('user_prefs');            // {...} / null
-  /// final name  = storage.get<String>('display_name');       // 'Ana' / null
-  /// ```
-  T? get<T>(String key) => _box.read<T>(key);
-
-  /// Elimina el valor asociado a [key].
-  void remove(String key) => _box.remove(key);
-
-  /// Indica si existe un valor guardado para [key].
-  bool has(String key) => _box.hasData(key);
-
-  // ── Limpieza completa ───────────────────────────────────────────────────────
-
-  /// Borra todos los datos guardados (se usa al cerrar sesión completamente)
-  void clearAll() => _box.erase();
+  Future<void> clearAll() async {
+    await _box.erase();
+  }
 }

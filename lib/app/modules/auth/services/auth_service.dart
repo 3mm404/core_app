@@ -1,9 +1,9 @@
-import 'package:core_app/app/data/models/userModel.dart';
-import 'package:core_app/core/api/api.dart';
+import 'package:core_app/app/modules/auth/models/user.dart';
 import 'package:core_app/core/https/my_apis.dart';
+import 'package:kitton/kitton.dart';
 
 class AuthService {
-  final Api api;
+  final KittonApi api;
 
   AuthService(this.api);
 
@@ -12,7 +12,7 @@ class AuthService {
     required String password,
   }) {
     return api.post<User>(
-      ApiAuthRoutes.login,
+      AuthRoutes.login,
       data: {
         'email': email,
         'password': password,
@@ -27,7 +27,7 @@ class AuthService {
     required String password,
   }) {
     return api.post<User>(
-      ApiAuthRoutes.register,
+ AuthRoutes.register,
       data: {
         'name': name,
         'email': email,
@@ -39,7 +39,7 @@ class AuthService {
 
   Future<void> logout() async {
     await api.postVoid(
-      ApiAuthRoutes.logout,
+       AuthRoutes.logout,
     );
   }
 }

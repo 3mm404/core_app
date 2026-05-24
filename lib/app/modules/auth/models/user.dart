@@ -1,4 +1,5 @@
-import 'package:core_app/core/kitton/kitton.dart';
+import 'package:core_app/app/modules/auth/models/wallet.dart';
+import 'package:kitton/kitton.dart';
 
 class User extends Kitton {
   User(super.data);
@@ -40,12 +41,4 @@ class User extends Kitton {
   bool get isDriver => role == 'driver';
 
   bool get isActive => status == 'active';
-}
-
-class Wallet extends Kitton {
-  Wallet(super.data);
-
-  num get balance => data['balance'] ?? 0;
-
-  num get reserved => data['reserved'] ?? 0;
 }

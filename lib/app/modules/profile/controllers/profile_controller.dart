@@ -1,0 +1,26 @@
+import 'package:core_app/app/modules/auth/models/user.dart';
+import 'package:core_app/app/modules/profile/repositories/profile_repository.dart';
+import 'package:core_app/core/getx/basecontroller.dart';
+import 'package:get/get.dart';
+
+class ProfileController extends BaseControllerV2 {
+  final ProfileRepository repository;
+
+  ProfileController(this.repository);
+
+  final Rxn<User> user = Rxn<User>();
+
+  @override
+  void onInit() {
+    super.onInit();
+    getProfile();
+  }
+
+  Future<void> getProfile() async {
+    await runGuarded(() async {
+      user.value = await repository.getProfile();
+
+      setSuccess();
+    });
+  }
+}
