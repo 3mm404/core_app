@@ -1,5 +1,5 @@
-import 'package:core_app/app/modules/auth/auth_module.dart';
-import 'package:core_app/app/modules/profile/profile_module.dart';
+import 'package:core_app/app/modules/auth/bindings/auth_module.dart';
+import 'package:core_app/app/modules/profile/bindings/profile_module.dart';
 import 'package:core_app/app/routes/app_pages.dart';
 import 'package:core_app/core/modules/core_module.dart';
 import 'package:flutter/material.dart';

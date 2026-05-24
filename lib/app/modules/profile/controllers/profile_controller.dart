@@ -1,4 +1,4 @@
-import 'package:core_app/app/modules/auth/models/user.dart';
+import 'package:core_app/app/data/models/user.dart';
 import 'package:core_app/app/modules/profile/repositories/profile_repository.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 import 'package:get/get.dart';

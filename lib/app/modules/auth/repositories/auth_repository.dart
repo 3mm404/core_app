@@ -1,4 +1,4 @@
-import 'package:core_app/app/modules/auth/models/user.dart';
+import 'package:core_app/app/data/models/user.dart';
 import 'package:core_app/app/modules/auth/services/auth_service.dart';
 
 class AuthRepository {

@@ -1,4 +1,4 @@
-import 'package:core_app/app/modules/auth/models/wallet.dart';
+import 'package:core_app/app/data/models/wallet.dart';
 import 'package:kitton/kitton.dart';
 
 class User extends Kitton {
