@@ -1,6 +1,6 @@
 import 'package:core_app/app/screens/auth/providers/authProviders.dart';
 import 'package:core_app/app/routes/app_pages.dart';
-import 'package:core_app/core/auth/session.dart';
+import 'package:core_app/core/session/session.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

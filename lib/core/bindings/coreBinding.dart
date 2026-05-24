@@ -1,4 +1,4 @@
-import 'package:core_app/core/auth/session.dart';
+import 'package:core_app/core/session/session.dart';
 import 'package:core_app/core/getx/storage.dart';
 import 'package:core_app/core/https/http_service.dart';
 import 'package:kitton/kitton.dart';

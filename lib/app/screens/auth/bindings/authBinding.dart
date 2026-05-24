@@ -1,7 +1,7 @@
 import 'package:core_app/app/screens/auth/controllers/auth_controller.dart';
 import 'package:core_app/app/screens/auth/providers/authProviders.dart';
 import 'package:core_app/app/screens/auth/services/auth_service.dart';
-import 'package:core_app/core/auth/session.dart';
+import 'package:core_app/core/session/session.dart';
 import 'package:kitton/kitton.dart';
 
 
