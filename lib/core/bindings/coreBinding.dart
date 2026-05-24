@@ -4,7 +4,7 @@ import 'package:core_app/core/https/http_service.dart';
 import 'package:kitton/kitton.dart';
 
 
-class CoreModule extends KittonRegister {
+class CoreBindings extends KittonRegister {
    @override
   @override
   void register() {

@@ -3,7 +3,7 @@ import 'package:core_app/app/routes/app_pages.dart';
 import 'package:core_app/app/screens/auth/bindings/authBinding.dart';
 import 'package:core_app/app/screens/profile/profile_module.dart';
 import 'package:core_app/app/screens/splash/bidings/splashBidings.dart';
-import 'package:core_app/core/modules/core_module.dart';
+import 'package:core_app/core/bindings/coreBinding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
 
 initialBinding: KittonBinding(
   registers: [
-    CoreModule(),
+    CoreBindings(),
     AuthModule(),
     ProfileModule(),
     SplashRegister(),
