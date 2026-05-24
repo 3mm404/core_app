@@ -1,8 +1,8 @@
-import 'package:core_app/app/screens/auth/controllers/auth_controller.dart';
+import 'package:core_app/app/screens/auth/controllers/loginController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends GetView<AuthController> {
+class LoginPage extends GetView<Logincontroller> {
   const LoginPage({super.key});
 
   @override
@@ -54,7 +54,12 @@ class LoginPage extends GetView<AuthController> {
                 return SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: controller.submitLogin,
+                    onPressed: controller.emailCtrl.text.isEmpty || controller.passwordCtrl.text.isEmpty
+                        ? null
+                        : () => controller.login(
+                              controller.emailCtrl.text.trim(),
+                              controller.passwordCtrl.text.trim(),
+                            ),
                     child: const Text('Entrar'),
                   ),
                 );

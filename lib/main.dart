@@ -28,7 +28,7 @@ class MainApp extends StatelessWidget {
 initialBinding: KittonBinding(
   registers: [
     CoreBindings(),
-    AuthRBindings(),
+    AuthBinding(),
     ProfileBinding(),
     SplashRegister(),
   ],

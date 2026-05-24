@@ -32,6 +32,8 @@ class User extends Kitton {
 
   String get password => string('password');
 
+  String get confirmPassword => string('confirm_password');
+
   String get token => string('token');
 
   Wallet? get wallet => model<Wallet>('wallet', Wallet.new);

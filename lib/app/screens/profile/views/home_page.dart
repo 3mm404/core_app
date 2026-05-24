@@ -1,12 +1,14 @@
-import 'package:core_app/app/screens/auth/controllers/auth_controller.dart';
+import 'package:core_app/app/screens/auth/controllers/logoutController.dart';
 import 'package:core_app/app/screens/profile/controllers/profile_controller.dart';
+import 'package:core_app/core/session/session.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView<ProfileController> {
   const HomePage({super.key});
 
-  AuthController get authController => Get.find<AuthController>();
+  LogoutController get logoutController => Get.find<LogoutController>();
+  Session get session => Get.find<Session>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class HomePage extends GetView<ProfileController> {
           }
 
           final profileUser = controller.user.value;
-          final sessionUser = authController.session.user.value;
+          final sessionUser = session.user.value;
 
           final user = profileUser ?? sessionUser;
 
@@ -56,7 +58,7 @@ class HomePage extends GetView<ProfileController> {
               const SizedBox(height: 32),
 
               ElevatedButton.icon(
-                onPressed: authController.logout,
+                onPressed: logoutController.logout,
                 icon: const Icon(Icons.logout),
                 label: const Text('Logout'),
               ),
