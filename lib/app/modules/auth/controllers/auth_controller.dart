@@ -1,4 +1,4 @@
-import 'package:core_app/app/modules/auth/repositories/auth_repository.dart';
+import 'package:core_app/app/modules/auth/providers/auth_repository.dart';
 import 'package:core_app/app/routes/app_pages.dart';
 import 'package:core_app/core/auth/session.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends BaseControllerV2 {
-  final AuthRepository repository;
+  final AuthProviders repository;
   final Session session;
 
   AuthController(this.repository, this.session);

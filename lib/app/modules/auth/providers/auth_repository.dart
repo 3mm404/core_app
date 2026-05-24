@@ -1,10 +1,10 @@
 import 'package:core_app/app/data/models/user.dart';
 import 'package:core_app/app/modules/auth/services/auth_service.dart';
 
-class AuthRepository {
+class AuthProviders {
   final AuthService service;
 
-  AuthRepository(this.service);
+  AuthProviders(this.service);
 
   Future<User> login({
     required String email,
