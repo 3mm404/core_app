@@ -1,6 +1,6 @@
 import 'package:core_app/app/middlewares/authMiddleware.dart';
-import 'package:core_app/app/modules/profile/views/home_page.dart';
-import 'package:core_app/app/modules/auth/views/login_page.dart';
+import 'package:core_app/app/screens/profile/views/home_page.dart';
+import 'package:core_app/app/screens/auth/views/login_page.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
