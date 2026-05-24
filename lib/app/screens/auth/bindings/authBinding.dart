@@ -5,7 +5,7 @@ import 'package:core_app/core/auth/session.dart';
 import 'package:kitton/kitton.dart';
 
 
-class AuthModule extends KittonRegister {
+class AuthRBindings extends KittonRegister {
    @override
   @override
   void register() {
