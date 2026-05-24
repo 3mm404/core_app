@@ -1,4 +1,4 @@
-import 'package:core_app/app/screens/auth/providers/auth_repository.dart';
+import 'package:core_app/app/screens/auth/providers/authProviders.dart';
 import 'package:core_app/app/routes/app_pages.dart';
 import 'package:core_app/core/auth/session.dart';
 import 'package:core_app/core/getx/basecontroller.dart';

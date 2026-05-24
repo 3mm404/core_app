@@ -4,7 +4,8 @@ import 'package:core_app/core/https/http_service.dart';
 import 'package:kitton/kitton.dart';
 
 
-class CoreModule extends KittonModule {
+class CoreModule extends KittonRegister {
+   @override
   @override
   void register() {
     keep(StorageService());
@@ -14,6 +15,5 @@ class CoreModule extends KittonModule {
     keep(KittonApi(find<HttpService>().client));
 
     keep(Session(find<StorageService>()));
-
   }
 }

@@ -1,5 +1,5 @@
 import 'package:core_app/app/data/models/user.dart';
-import 'package:core_app/app/screens/profile/providers/profile_repository.dart';
+import 'package:core_app/app/screens/profile/providers/profileProviders.dart';
 import 'package:core_app/core/getx/basecontroller.dart';
 import 'package:get/get.dart';
 
