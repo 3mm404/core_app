@@ -1,6 +1,7 @@
 import 'package:core_app/app/routes/app_pages.dart';
 import 'package:core_app/app/screens/auth/bindings/auth_module.dart';
 import 'package:core_app/app/screens/profile/profile_module.dart';
+import 'package:core_app/app/screens/splash/module/splashModule.dart';
 import 'package:core_app/core/modules/core_module.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,6 +29,7 @@ class MainApp extends StatelessWidget {
           CoreModule(),
           AuthModule(),
           ProfileModule(),
+          SplashModule(),
         ],
       ),
 

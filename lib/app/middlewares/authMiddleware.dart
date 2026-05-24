@@ -22,7 +22,7 @@ class GuestMiddleware extends GetMiddleware {
     final session = Get.find<Session>();
 
     if (session.isLoggedIn) {
-      return const RouteSettings(name: AppRoutes.home);
+      return const RouteSettings(name: AppRoutes.splash);
     }
 
     return null;

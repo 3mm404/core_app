@@ -14,5 +14,6 @@ class CoreModule extends KittonModule {
     keep(KittonApi(find<HttpService>().client));
 
     keep(Session(find<StorageService>()));
+
   }
 }
