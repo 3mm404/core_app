@@ -8,28 +8,16 @@ class LoginPage extends GetView<Logincontroller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-              const SizedBox(height: 32),
-
               TextField(
                 controller: controller.emailCtrl,
-                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
+                  hintText: 'Email',
                 ),
               ),
 
@@ -39,28 +27,22 @@ class LoginPage extends GetView<Logincontroller> {
                 controller: controller.passwordCtrl,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
+                  hintText: 'Password',
                 ),
               ),
 
               const SizedBox(height: 24),
 
               Obx(() {
-                if (controller.isLoading) {
-                  return const CircularProgressIndicator();
-                }
-
                 return SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: controller.emailCtrl.text.isEmpty || controller.passwordCtrl.text.isEmpty
+                    onPressed: controller.isLoading
                         ? null
-                        : () => controller.login(
-                              controller.emailCtrl.text.trim(),
-                              controller.passwordCtrl.text.trim(),
-                            ),
-                    child: const Text('Entrar'),
+                        : () => controller.login(),
+                    child: controller.isLoading
+                        ? const CircularProgressIndicator()
+                        : const Text('Login'),
                   ),
                 );
               }),
