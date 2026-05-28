@@ -1,14 +1,15 @@
 import 'dart:async';
 
-import 'package:core_app/app/screens/activity/services/cripService.dart';
 import 'package:get/get.dart';
+import 'package:core_app/app/screens/activity/services/cripService.dart';
 
 class CryptoController extends GetxController {
   final CryptoSocketService service;
 
   CryptoController(this.service);
 
-  final price = '0.00'.obs;
+  final RxString price = '0.00'.obs;
+  final RxList<double> history = <double>[].obs;
 
   StreamSubscription<String>? _subscription;
 
@@ -16,9 +17,24 @@ class CryptoController extends GetxController {
   void onInit() {
     super.onInit();
 
-    _subscription = service.watchBitcoinPrice().listen((value) {
-      price.value = value;
-    });
+    _subscription = service.watchBitcoinPrice().listen(
+      (value) {
+        price.value = value;
+
+        final parsed = double.tryParse(value);
+
+        if (parsed != null) {
+          history.add(parsed);
+
+          if (history.length > 30) {
+            history.removeAt(0);
+          }
+        }
+      },
+      onError: (error) {
+        price.value = '0.00';
+      },
+    );
   }
 
   @override
