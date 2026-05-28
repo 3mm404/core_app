@@ -1,6 +1,7 @@
 import 'package:core_app/app/middlewares/authMiddleware.dart';
-import 'package:core_app/app/screens/profile/views/home_page.dart';
+import 'package:core_app/app/screens/profile/views/profilePage.dart';
 import 'package:core_app/app/screens/auth/views/login_page.dart';
+import 'package:core_app/app/screens/root/nav/widget/navigationWidget.dart';
 import 'package:core_app/app/screens/splash/views/splashPage.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +26,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomePage(),
+      page: () => const Navigationwidget(),
       middlewares: [
         AuthMiddleware(),
       ],

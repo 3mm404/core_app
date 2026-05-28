@@ -1,7 +1,7 @@
 import 'package:core_app/app/data/models/user.dart';
 import 'package:core_app/app/routes/app_pages.dart';
 import 'package:core_app/app/screens/auth/providers/registerProvider.dart';
-import 'package:core_app/core/getx/basecontroller.dart';
+import 'package:core_app/core/services/basecontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

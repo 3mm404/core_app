@@ -2,7 +2,7 @@
 import 'package:core_app/core/https/interseptor/auth_interceptor.dart';
 import 'package:core_app/core/https/interseptor/error_interceptor.dart';
 import 'package:core_app/core/https/my_apis.dart';
-import 'package:core_app/core/getx/storage.dart';
+import 'package:core_app/core/services/storage.dart';
 import 'package:dio/dio.dart';
 
 

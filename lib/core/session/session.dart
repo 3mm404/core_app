@@ -1,5 +1,5 @@
 import 'package:core_app/app/data/models/user.dart';
-import 'package:core_app/core/getx/storage.dart';
+import 'package:core_app/core/services/storage.dart';
 import 'package:get/get.dart';
 import 'package:kitton/kitton.dart';
 
